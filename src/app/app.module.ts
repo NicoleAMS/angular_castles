@@ -21,8 +21,7 @@ import { CastlesDetailComponent } from './castles/castles-detail/castles-detail.
   ],
   imports: [
     BrowserModule,
-    FormsModule,
-    Http
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
