@@ -1,0 +1,10 @@
+h3 {
+    color: white; 
+    text-align: center;
+}
+
+.sidebar {
+    height: 1000px;
+    border: 1px solid white;
+    margin-bottom: 20px;
+}

@@ -1,3 +1,17 @@
-<p>
-  castles-list-item works!
-</p>
+<div class="col col-xs-12">
+  <a class="list-group-item clearfix" style="cursor: pointer;">
+      <div class="row">
+        <span class="col col-lg-6">
+            <img src="{{castle.images[0]}}" alt="Image of: {{castle.name}}" class="img-fluid">
+          </span>
+        <div class="col col-lg-6">
+          <h4 class="list-group-item-header">{{castle.name | uppercase }}</h4>
+          <p class="list-group-item-text">{{castle.description}}</p><br>
+          <p class="list-group-item-text">{{castle.county}}</p>
+        </div>
+      </div>
+      <br>
+    </a>
+    <hr>
+</div>
+

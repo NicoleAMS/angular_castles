@@ -10,6 +10,8 @@ import { CastlesListComponent } from './castles/castles-list/castles-list.compon
 import { CastlesListItemComponent } from './castles/castles-list/castles-list-item/castles-list-item.component';
 import { CastlesDetailComponent } from './castles/castles-detail/castles-detail.component';
 
+import { CastleService } from './_services/castle.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,7 +25,7 @@ import { CastlesDetailComponent } from './castles/castles-detail/castles-detail.
     BrowserModule,
     FormsModule
   ],
-  providers: [],
+  providers: [CastleService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

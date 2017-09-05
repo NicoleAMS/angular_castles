@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Castle } from '../../castle.model';
 
 @Component({
   selector: 'app-castles-list-item',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./castles-list-item.component.css']
 })
 export class CastlesListItemComponent implements OnInit {
+  @Input() castle: Castle; 
+  @Input() index: number;
 
   constructor() { }
 

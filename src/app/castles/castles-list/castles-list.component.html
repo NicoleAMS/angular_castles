@@ -1,3 +1,16 @@
-<p>
-  castles-list works!
-</p>
+<div class="container">
+  <div class="row">
+    <div class="col col-xs-4">
+      <h3>CHOOSE A CASTLE TO VISIT</h3>
+      <div class="sidebar"></div>
+    </div>
+    <div class="col col-xs-8">
+      <app-castles-list-item 
+        *ngFor="let castle of castles; let i = index" 
+        [castle]="castle" [index]="i">
+      </app-castles-list-item>  
+    </div>
+  </div>
+</div>
+
+
