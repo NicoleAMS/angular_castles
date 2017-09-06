@@ -9,6 +9,7 @@
         *ngFor="let castle of castles; let i = index" 
         [castle]="castle" [index]="i">
       </app-castles-list-item>  
+      <router-outlet></router-outlet>
     </div>
   </div>
 </div>

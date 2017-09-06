@@ -30,8 +30,21 @@ export class CastleService {
             ['£3.00', 'Free entry', 'Free entry'],
             'Open on the first Saturday of the month.',
             'Rye, East Sussex',
-            'Rye, East Sussex'
+            'East Sussex, South East'
+        ),
+        new Castle(
+            'Deal Castle',
+            ['http://www.princesgolfclub.co.uk/themes/frontend/princes/assets/images/attractions/3.jpg'],
+            "For a fascinating day out on the Kent coast then look no further than Deal Castle. Built by the order of King Henry VIII it is one of the finest Tudor artillery castles in England.",
+            ['£6.60', '£4.00', 'Free entry'],
+            'Every day from 10.00 till 18.00.',
+            'Marine Road, Deal, Kent, CT14 7BA',
+            'Kent, South East'
         )
     ];
+
+    getCastle(id: number) {
+        return this.castles[id];
+    }
 }
 

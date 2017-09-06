@@ -7,7 +7,7 @@ import { Castle } from '../../castle.model';
   styleUrls: ['./castles-list-item.component.css']
 })
 export class CastlesListItemComponent implements OnInit {
-  @Input() castle: Castle; 
+  @Input() castle: Castle;
   @Input() index: number;
 
   constructor() { }
