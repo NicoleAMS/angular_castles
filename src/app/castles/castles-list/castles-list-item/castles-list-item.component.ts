@@ -15,4 +15,5 @@ export class CastlesListItemComponent implements OnInit {
   ngOnInit() {
   }
 
+
 }

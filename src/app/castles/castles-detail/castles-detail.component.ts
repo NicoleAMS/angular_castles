@@ -11,7 +11,7 @@ import { CastleService } from '../../_services/castle.service';
 export class CastlesDetailComponent implements OnInit {
   castle: Castle;
   id: number;
-  url: string;
+  name: string;
 
   constructor(
     private castleService: CastleService,
@@ -24,7 +24,6 @@ export class CastlesDetailComponent implements OnInit {
       (params: Params) => {
         this.id = +params['id'];
         this.castle = this.castleService.getCastle(this.id);
-        console.log(this.castle);
       }
     );
   }

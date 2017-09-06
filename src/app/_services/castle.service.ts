@@ -46,5 +46,9 @@ export class CastleService {
     getCastle(id: number) {
         return this.castles[id];
     }
+
+    getCastles() {
+        return this.castles.slice();
+    }
 }
 
