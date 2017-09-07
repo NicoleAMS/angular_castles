@@ -25,8 +25,11 @@
           <li><a href="#">Support Us</a></li>
           <li><a href="#">Learn</a></li>
           <li><a href="#">Shop</a></li>
-          <li><a href="#">Join</a></li>
-        <li><a href="#">Members' Area</a></li>
+          <ng-template [ngIf]="!authService.isAuthenticated()">
+            <li><a [routerLink]="['/register']">Join</a></li>
+            <li><a [routerLink]="['/login']">Members' Area</a></li>
+          </ng-template>
+          <li *ngIf="authService.isAuthenticated()"><a style="cursor: pointer;" (click)="onLogout()">Logout</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->

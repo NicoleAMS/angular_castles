@@ -17,12 +17,12 @@ export class CastlesListComponent implements OnInit {
   ngOnInit() {
     this.castles = this.castleService.castles;
 
-    this.dataStorageService.storeCastles()
-    .subscribe(
-      (response: Response) => {
-        console.log(response);
-      }
-    );
+    // this.dataStorageService.storeCastles()
+    // .subscribe(
+    //   (response: Response) => {
+    //     console.log(response);
+    //   }
+    // );
   }
 
 

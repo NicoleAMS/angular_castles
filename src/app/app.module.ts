@@ -11,14 +11,19 @@ import { CastlesListComponent } from './castles/castles-list/castles-list.compon
 import { CastlesListItemComponent } from './castles/castles-list/castles-list-item/castles-list-item.component';
 import { CastlesDetailComponent } from './castles/castles-detail/castles-detail.component';
 import { HomeComponent } from './home/home.component';
+import { RegisterComponent } from './membership/register/register.component';
+import { LoginComponent } from './membership/login/login.component';
 
 import { CastleService } from './_services/castle.service';
 import { DataStorageService } from './_services/data-storage.service';
+import { AuthService } from './_services/auth.service';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'visit', component: CastlesListComponent },
-  { path: 'visit/:id/:name', component: CastlesDetailComponent }
+  { path: 'visit/:id/:name', component: CastlesDetailComponent },
+  { path: 'register', component: RegisterComponent },
+  { path: 'login', component: LoginComponent }
 ];
 
 @NgModule({
@@ -29,7 +34,9 @@ const appRoutes: Routes = [
     CastlesListComponent,
     CastlesListItemComponent,
     CastlesDetailComponent,
-    HomeComponent
+    HomeComponent,
+    RegisterComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +44,7 @@ const appRoutes: Routes = [
     HttpModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [CastleService, DataStorageService],
+  providers: [CastleService, DataStorageService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
