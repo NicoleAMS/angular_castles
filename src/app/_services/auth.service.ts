@@ -5,6 +5,9 @@ import { Router } from '@angular/router';
 @Injectable()
 export class AuthService {
     token: string;
+    alertMessage = false;
+    welcomeMessage = '';
+    logoutMessage = '';
     // currentUser = firebase.auth().currentUser;
 
     constructor(private router: Router) {}
@@ -26,6 +29,9 @@ export class AuthService {
         .then(
             response => {
                 console.log(response);
+                this.alertMessage = true;
+                // console.log(this.alertMessage);
+                this.welcomeMessage = 'Welcome, ' + email;
                 this.router.navigate(['/']);
                 firebase.auth().currentUser.getIdToken()
                 .then(
@@ -40,7 +46,11 @@ export class AuthService {
 
     signout() {
         firebase.auth().signOut();
+        this.alertMessage = true;
+        this.logoutMessage = 'Successfully logged out';
+        // console.log(this.logoutMessage);
         this.token = null;
+        this.router.navigate(['/']);
     }
 
     getToken() {

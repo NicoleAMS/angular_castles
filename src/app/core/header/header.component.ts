@@ -17,4 +17,15 @@ export class HeaderComponent implements OnInit {
     this.authService.signout();
   }
 
+  onCloseAlert() {
+    console.log('Alert closed!');
+    const alertMessage = document.getElementById('welcome');
+    alertMessage.style.display = 'none';
+  }
+
+  onCloseLogoutAlert() {
+    const logoutMessage = document.getElementById('logout');
+    logoutMessage.style.display = 'none';
+  }
+
 }

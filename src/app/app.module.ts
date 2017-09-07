@@ -17,11 +17,12 @@ import { LoginComponent } from './membership/login/login.component';
 import { CastleService } from './_services/castle.service';
 import { DataStorageService } from './_services/data-storage.service';
 import { AuthService } from './_services/auth.service';
+import { AuthGuard } from './_services/auth-guard.service';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'visit', component: CastlesListComponent },
-  { path: 'visit/:id/:name', component: CastlesDetailComponent },
+  { path: 'visit/:id/:name', component: CastlesDetailComponent, canActivate: [AuthGuard] },
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent }
 ];
@@ -44,7 +45,7 @@ const appRoutes: Routes = [
     HttpModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [CastleService, DataStorageService, AuthService],
+  providers: [CastleService, DataStorageService, AuthService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
