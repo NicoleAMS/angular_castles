@@ -35,7 +35,11 @@ export class AuthService {
                 this.router.navigate(['/']);
                 firebase.auth().currentUser.getIdToken()
                 .then(
-                    (token: string) => this.token = token
+                    (token: string) => {
+                        this.token = token;
+                        console.log(this.token);
+                        localStorage.setItem('savedToken', this.token);
+                    }
                 );
             }
         )
