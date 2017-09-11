@@ -29,6 +29,7 @@
             <li><a [routerLink]="['/register']">Join</a></li>
             <li><a [routerLink]="['/login']">Members' Area</a></li>
           </ng-template>
+          <li *ngIf="authService.isAuthenticated() && authService.isAdmin === true"><a style="cursor: pointer;">Manage Castles</a></li>
           <li *ngIf="authService.isAuthenticated()"><a style="cursor: pointer;" (click)="onLogout()">Logout</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->

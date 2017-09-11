@@ -9,7 +9,7 @@ export class AuthService {
     alertMessage = false;
     welcomeMessage = '';
     logoutMessage = '';
-    // currentUser = firebase.auth().currentUser;
+    isAdmin = false;
 
     constructor(private router: Router, private http: Http) {}
 
@@ -17,11 +17,11 @@ export class AuthService {
         firebase.auth().createUserWithEmailAndPassword(email, password)
         .then(
             response => {
-                response.getIdToken().then((token: string) => {
-                    console.log(response);
-                    this.token = token;
-                    return this.http.put('https://angular-castles.firebaseio.com/users.json?auth=' + this.token, response.email);
-                });
+                // response.getIdToken().then((token: string) => {
+                //     console.log(response);
+                //     this.token = token;
+                //     return this.http.put('https://angular-castles.firebaseio.com/users.json?auth=' + this.token, response.email);
+                // });
                 this.signinUser(email, password);
             }
         )
@@ -39,7 +39,11 @@ export class AuthService {
                 // console.log(this.alertMessage);
                 this.welcomeMessage = 'Welcome, ' + email;
                 this.router.navigate(['/']);
-                firebase.auth().currentUser.getIdToken()
+                const currentUser = firebase.auth().currentUser;
+                if (currentUser.email === 'fred@hotmail.com') {
+                    this.isAdmin = true;
+                }
+                currentUser.getIdToken()
                 .then(
                     (token: string) => {
                         this.token = token;
@@ -52,6 +56,7 @@ export class AuthService {
         .catch(
             error => console.log(error)
         );
+
     }
 
     signout() {
