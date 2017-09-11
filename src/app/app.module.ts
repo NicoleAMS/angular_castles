@@ -18,6 +18,7 @@ import { CastleService } from './_services/castle.service';
 import { DataStorageService } from './_services/data-storage.service';
 import { AuthService } from './_services/auth.service';
 import { AuthGuard } from './_services/auth-guard.service';
+import { ProfileComponent } from './profile/profile.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -37,7 +38,8 @@ const appRoutes: Routes = [
     CastlesDetailComponent,
     HomeComponent,
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

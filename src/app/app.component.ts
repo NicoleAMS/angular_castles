@@ -19,6 +19,7 @@ export class AppComponent implements OnInit {
 
     firebase.auth().onAuthStateChanged(function(user) {
       if (user) {
+        console.log(user);
         user.getIdToken().then(function(data) {
           const token = data;
           firebase.auth().signInWithCustomToken(token);

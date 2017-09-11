@@ -1,6 +1,7 @@
 import * as firebase from 'firebase';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { Http } from '@angular/http';
 
 @Injectable()
 export class AuthService {
@@ -10,12 +11,17 @@ export class AuthService {
     logoutMessage = '';
     // currentUser = firebase.auth().currentUser;
 
-    constructor(private router: Router) {}
+    constructor(private router: Router, private http: Http) {}
 
     signupUser(email: string, password: string) {
         firebase.auth().createUserWithEmailAndPassword(email, password)
         .then(
             response => {
+                response.getIdToken().then((token: string) => {
+                    console.log(response);
+                    this.token = token;
+                    return this.http.put('https://angular-castles.firebaseio.com/users.json?auth=' + this.token, response.email);
+                });
                 this.signinUser(email, password);
             }
         )
@@ -28,7 +34,7 @@ export class AuthService {
         firebase.auth().signInWithEmailAndPassword(email, password)
         .then(
             response => {
-                console.log(response);
+                // console.log(response);
                 this.alertMessage = true;
                 // console.log(this.alertMessage);
                 this.welcomeMessage = 'Welcome, ' + email;
@@ -37,7 +43,7 @@ export class AuthService {
                 .then(
                     (token: string) => {
                         this.token = token;
-                        console.log(this.token);
+                        // console.log(this.token);
                         localStorage.setItem('savedToken', this.token);
                     }
                 );

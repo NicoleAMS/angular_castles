@@ -13,4 +13,5 @@ export class DataStorageService {
         const token = this.authService.getToken();
         return this.http.put('https://angular-castles.firebaseio.com/castles.json?auth=' + token, this.castleService.getCastles());
     }
+
 }
