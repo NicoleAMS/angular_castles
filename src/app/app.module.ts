@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { Routes, RouterModule } from '@angular/router';
 
@@ -13,19 +13,24 @@ import { CastlesDetailComponent } from './castles/castles-detail/castles-detail.
 import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './membership/register/register.component';
 import { LoginComponent } from './membership/login/login.component';
+import { ProfileComponent } from './profile/profile.component';
+import { ManageCastlesComponent } from './admin/manage-castles/manage-castles.component';
 
 import { CastleService } from './_services/castle.service';
 import { DataStorageService } from './_services/data-storage.service';
 import { AuthService } from './_services/auth.service';
 import { AuthGuard } from './_services/auth-guard.service';
-import { ProfileComponent } from './profile/profile.component';
+import { AdminGuard } from './_services/admin-guard.service';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'visit', component: CastlesListComponent },
   { path: 'visit/:id/:name', component: CastlesDetailComponent, canActivate: [AuthGuard] },
   { path: 'register', component: RegisterComponent },
-  { path: 'login', component: LoginComponent }
+  { path: 'login', component: LoginComponent },
+  { path: 'admin/castles/new', component: ManageCastlesComponent },
+  { path: 'admin/castles/:id/edit', component: ManageCastlesComponent }
+  // canActivate: [AuthGuard, AdminGuard]
 ];
 
 @NgModule({
@@ -39,15 +44,17 @@ const appRoutes: Routes = [
     HomeComponent,
     RegisterComponent,
     LoginComponent,
-    ProfileComponent
+    ProfileComponent,
+    ManageCastlesComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [CastleService, DataStorageService, AuthService, AuthGuard],
+  providers: [CastleService, DataStorageService, AuthService, AuthGuard, AdminGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

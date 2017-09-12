@@ -51,4 +51,3 @@ export class CastleService {
         return this.castles.slice();
     }
 }
-

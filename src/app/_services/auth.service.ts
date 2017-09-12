@@ -17,11 +17,11 @@ export class AuthService {
         firebase.auth().createUserWithEmailAndPassword(email, password)
         .then(
             response => {
-                // response.getIdToken().then((token: string) => {
-                //     console.log(response);
-                //     this.token = token;
-                //     return this.http.put('https://angular-castles.firebaseio.com/users.json?auth=' + this.token, response.email);
-                // });
+                response.getIdToken().then((token: string) => {
+                    console.log(response);
+                    this.token = token;
+                    return this.http.post('https://angular-castles.firebaseio.com/users.json?auth=' + this.token, response.email);
+                });
                 this.signinUser(email, password);
             }
         )
@@ -79,4 +79,5 @@ export class AuthService {
     isAuthenticated() {
         return this.token != null;
     }
+
 }
