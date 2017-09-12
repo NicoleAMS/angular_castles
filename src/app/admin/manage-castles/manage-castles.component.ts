@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
-import { FormGroup, FormControl, FormArray } from '@angular/forms';
+import { FormGroup, FormControl, FormArray, Validators } from '@angular/forms';
+
+import { Castle } from '../../castles/castle.model';
 
 import { CastleService } from '../../_services/castle.service';
 
@@ -28,7 +30,28 @@ export class ManageCastlesComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.castleForm);
+    const newCastle = new Castle(
+      this.castleForm.value['name'],
+      this.castleForm.value['images'],
+      this.castleForm.value['description'],
+      this.castleForm.value['prices'],
+      this.castleForm.value['openingTimes'],
+      this.castleForm.value['address'],
+      this.castleForm.value['county']
+    );
+    if (this.editMode) {
+      this.castleService.updateCastle(this.id, newCastle);
+    } else {
+      this.castleService.addCastle(newCastle);
+    }
+  }
+
+  onAddImage() {
+    (<FormArray>this.castleForm.get('images')).push(
+      new FormGroup({
+        'url': new FormControl(null, Validators.required)
+      })
+    );
   }
 
   private initForm() {
@@ -54,18 +77,17 @@ export class ManageCastlesComponent implements OnInit {
       }
       if (castle['images']) {
         for (const image of castle.images) {
-          console.log(image);
           castleImages.push(
             new FormGroup({
-              'image': new FormControl(image)
+              'url': new FormControl(image.url, Validators.required)
             })
           );
-          console.log(castleImages[0]);
         }
       }
     }
+
     this.castleForm = new FormGroup({
-      'name': new FormControl(castleName),
+      'name': new FormControl(castleName, Validators.required),
       'address': new FormControl(castleAddress),
       'county': new FormControl(castleCounty),
       'description': new FormControl(castleDescription),
@@ -75,6 +97,7 @@ export class ManageCastlesComponent implements OnInit {
       'priceM': new FormControl(castlePrices[2]),
       'images': castleImages
     });
+    console.log(this.castleForm);
   }
 
 }

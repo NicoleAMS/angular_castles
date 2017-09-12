@@ -15,6 +15,11 @@ export class CastlesListComponent implements OnInit {
   constructor(private castleService: CastleService, private dataStorageService: DataStorageService) { }
 
   ngOnInit() {
+    this.castleService.castlesChanged.subscribe(
+      (castles: Castle[]) => {
+        this.castles = castles;
+      }
+    );
     this.castles = this.castleService.castles;
 
     // this.dataStorageService.storeCastles()

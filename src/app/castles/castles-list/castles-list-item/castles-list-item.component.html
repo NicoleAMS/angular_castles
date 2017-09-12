@@ -2,7 +2,7 @@
   <a [routerLink]='[index, castle.name]' class="list-group-item clearfix" style="cursor: pointer;">
       <div class="row">
         <span class="col col-lg-6">
-            <img src="{{castle.images[0]}}" alt="Image of: {{castle.name}}" class="img-fluid">
+            <img src="{{castle.images[0].url}}" alt="Image of: {{castle.name}}" class="img-fluid">
           </span>
         <div class="col col-lg-6">
           <h4 class="list-group-item-header">{{castle.name | uppercase }}</h4>
