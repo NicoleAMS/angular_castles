@@ -2,10 +2,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { Routes, RouterModule } from '@angular/router';
+// import { Routes, RouterModule } from '@angular/router';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
+
+import { AppRoutingModule } from './app-routing.module';
 import { environment } from '../environments/environment';
 
 import { AppComponent } from './app.component';
@@ -26,17 +28,6 @@ import { AuthService } from './_services/auth.service';
 import { AuthGuard } from './_services/auth-guard.service';
 import { AdminGuard } from './_services/admin-guard.service';
 
-const appRoutes: Routes = [
-  { path: '', component: HomeComponent },
-  { path: 'visit', component: CastlesListComponent },
-  { path: 'visit/:id/:name', component: CastlesDetailComponent, canActivate: [AuthGuard] },
-  { path: 'register', component: RegisterComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'admin/castles/new', component: ManageCastlesComponent },
-  { path: 'admin/castles/:id/edit', component: ManageCastlesComponent }
-  // canActivate: [AuthGuard, AdminGuard]
-];
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -55,11 +46,12 @@ const appRoutes: Routes = [
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFireDatabaseModule,
+    AppRoutingModule,
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
-    RouterModule.forRoot(appRoutes)
+    // RouterModule.forRoot(appRoutes)
   ],
   providers: [CastleService, DataStorageService, AuthService, AuthGuard, AdminGuard],
   bootstrap: [AppComponent]
