@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
+import { Response } from '@angular/http';
 import { FormGroup, FormControl, FormArray, Validators } from '@angular/forms';
 
 import { Castle } from '../../castles/castle.model';
 
 import { CastleService } from '../../_services/castle.service';
+import { DataStorageService } from '../../_services/data-storage.service';
 
 @Component({
   selector: 'app-manage-castles',
@@ -16,7 +18,9 @@ export class ManageCastlesComponent implements OnInit {
   editMode = false;
   castleForm: FormGroup;
 
-  constructor(private route: ActivatedRoute, private castleService: CastleService) { }
+  constructor(private route: ActivatedRoute,
+    private castleService: CastleService,
+    private dataStorageService: DataStorageService) { }
 
   ngOnInit() {
     this.route.params.subscribe(
@@ -44,6 +48,7 @@ export class ManageCastlesComponent implements OnInit {
     } else {
       this.castleService.addCastle(newCastle);
     }
+    this.onSave();
   }
 
   onAddImage() {
@@ -51,6 +56,15 @@ export class ManageCastlesComponent implements OnInit {
       new FormGroup({
         'url': new FormControl(null, Validators.required)
       })
+    );
+  }
+
+  onSave() {
+    this.dataStorageService.storeCastles()
+    .subscribe(
+      (response: Response) => {
+        console.log(response);
+      }
     );
   }
 

@@ -9,7 +9,11 @@ import * as firebase from 'firebase';
 })
 export class AppComponent implements OnInit {
 
-  constructor(private authService: AuthService) {}
+  auth: AuthService;
+
+  constructor(private authService: AuthService) {
+    this.auth = authService;
+  }
 
   ngOnInit() {
     firebase.initializeApp({
@@ -17,12 +21,13 @@ export class AppComponent implements OnInit {
       authDomain: "angular-castles.firebaseapp.com",
     });
 
-    firebase.auth().onAuthStateChanged(function(user) {
+    firebase.auth().onAuthStateChanged( (user) => {
       if (user) {
-        console.log(user);
-        user.getIdToken().then(function(data) {
-          const token = data;
-          firebase.auth().signInWithCustomToken(token);
+        console.log("You are logged in");
+        user.getIdToken().then((data) => {
+          this.auth.token = data;
+          console.log(this.auth);
+        //   firebase.auth().signInWithCustomToken(token);
         });
         // console.log(user);
         // const token = localStorage.getItem('savedToken');

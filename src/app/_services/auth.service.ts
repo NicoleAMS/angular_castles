@@ -5,7 +5,7 @@ import { Http } from '@angular/http';
 
 @Injectable()
 export class AuthService {
-    token: string;
+    token = null;
     alertMessage = false;
     welcomeMessage = '';
     logoutMessage = '';
@@ -47,7 +47,7 @@ export class AuthService {
                 .then(
                     (token: string) => {
                         this.token = token;
-                        // console.log(this.token);
+                        console.log(this.token);
                         localStorage.setItem('savedToken', this.token);
                     }
                 );
