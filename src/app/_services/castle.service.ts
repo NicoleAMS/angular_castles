@@ -1,7 +1,13 @@
+import { Castle2, Image } from '../castles/castle';
+import { Castle } from '../castles/castle.model';
+import { Injectable } from '@angular/core';
+import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database';
 import { Subject } from 'rxjs/Subject';
-import { Castle, Image } from '../castles/castle.model';
 
+@Injectable()
 export class CastleService {
+    castle$: FirebaseObjectObservable<Castle2>;
+    castles$: FirebaseListObservable<Castle2[]>;
 
     castlesChanged = new Subject<Castle[]>();
 
@@ -48,13 +54,23 @@ export class CastleService {
         // )
     ];
 
+    constructor(private db: AngularFireDatabase) {
+        this.castle$ = db.object('/castle');
+        this.castles$ = db.list('/castles');
+    }
+
+    getCastles() {
+        this.castles$.forEach(value => console.log(value));
+        return this.castles$;
+    }
+
     getCastle(id: number) {
         return this.castles[id];
     }
 
-    getCastles() {
-        return this.castles.slice();
-    }
+    // getCastles() {
+    //     return this.castles.slice();
+    // }
 
     addCastle(castle: Castle) {
         this.castles.push(castle);
