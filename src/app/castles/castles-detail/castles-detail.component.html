@@ -1,40 +1,41 @@
-<div class="row">
-  <div class="col-xs-12 name">
-    <h1>{{ castle.name | uppercase }}</h1>
+<div *ngIf="castle$ | async as castle">
+  <div class="row">
+    <div class="col-xs-12 name">
+      <h1>{{ castle.name | uppercase }}</h1>
+    </div>
   </div>
-</div>
 
-<div class="row">
-  <div class="col-xs-12">
-      <ul class="nav navbar-nav navbar-left">
-        <li><a href="#">Directions</a></li>
-        <li><a href="#">Opening Times</a></li>
-        <li><a href="#">History</a></li>
-      </ul>
+  <div class="row">
+    <div class="col-xs-12">
+        <ul class="nav navbar-nav navbar-left">
+          <li><a href="#">Directions</a></li>
+          <li><a href="#">Opening Times</a></li>
+          <li><a href="#">History</a></li>
+        </ul>
+    </div>
   </div>
-</div>
 
-<div class="row">
-  <div class="col-xs-12">
-      <div class="jumbotron" [ngStyle]="{'background-image': 'url(' + castle.images[0].url + ')' }">
-        <div class="col-xs-5 col-xs-offset-7">
-          <div class="welcome">
-            <h2>Wecome to {{castle.name}}</h2>
+  <div class="row">
+    <div class="col-xs-12">
+        <div class="jumbotron" [ngStyle]="{'background-image': 'url(' + castle.images[0].url + ')' }">
+          <div class="col-xs-5 col-xs-offset-7">
+            <div class="welcome">
+              <h2>Wecome to {{castle.name}}</h2>
+            </div>
           </div>
         </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-6 description">
+      <h4>DESCRIPTION</h4>
+      <p>{{castle.description}}</p>
+    </div>
+    <div class="col-xs-6 before">
+        <h4>BEFORE YOU GO</h4>
+        <p><strong>Opening Times: </strong>{{castle.openingTimes}}</p>
+        <p><strong>Address: </strong>{{castle.address}}</p>
       </div>
   </div>
 </div>
-
-<div class="row">
-  <div class="col-xs-6 description">
-    <h4>DESCRIPTION</h4>
-    <p>{{castle.description}}</p>
-  </div>
-  <div class="col-xs-6 before">
-      <h4>BEFORE YOU GO</h4>
-      <p><strong>Opening Times: </strong>{{castle.openingTimes}}</p>
-      <p><strong>Address: </strong>{{castle.address}}</p>
-    </div>
-</div>
-

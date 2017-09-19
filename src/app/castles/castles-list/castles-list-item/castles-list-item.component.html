@@ -1,5 +1,5 @@
 <div class="col col-xs-12">
-  <a class="list-group-item clearfix" style="cursor: pointer;">
+  <a [routerLink]="[castle.$key]" class="list-group-item clearfix" style="cursor: pointer;">
       <div class="row">
         <span class="col col-lg-6">
             <img src="{{castle.images[0].url}}" alt="Image of: {{castle.name}}" class="img-fluid">

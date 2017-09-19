@@ -11,12 +11,13 @@ import { ManageCastlesComponent } from './admin/manage-castles/manage-castles.co
 const appRoutes: Routes = [
     { path: '', component: HomeComponent },
     { path: 'visit', component: CastlesListComponent },
-    { path: 'visit/:id/:name', component: CastlesDetailComponent, canActivate: [AuthGuard] },
+    { path: 'visit/:id', component: CastlesDetailComponent },
     { path: 'register', component: RegisterComponent },
     { path: 'login', component: LoginComponent },
     { path: 'admin/castles/new', component: ManageCastlesComponent },
     { path: 'admin/castles/:id/edit', component: ManageCastlesComponent }
     // canActivate: [AuthGuard, AdminGuard]
+    // canActivate: [AuthGuard]
   ];
 
 @NgModule({

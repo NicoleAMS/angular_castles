@@ -59,13 +59,14 @@ export class CastleService {
         this.castles$ = db.list('/castles');
     }
 
+    getCastle(castleKey) {
+        console.log(castleKey);
+        return this.db.object(`castles/${castleKey}`);
+    }
+
     getCastles() {
         this.castles$.forEach(value => console.log(value));
         return this.castles$;
-    }
-
-    getCastle(id: number) {
-        return this.castles[id];
     }
 
     // getCastles() {
