@@ -1,17 +1,22 @@
-import * as firebase from 'firebase';
+import * as firebase from 'firebase/app';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Http } from '@angular/http';
+import { Observable } from 'rxjs/Observable';
+import { AngularFireAuth } from 'angularfire2/auth';
 
 @Injectable()
 export class AuthService {
     token = null;
     alertMessage = false;
+    user$: Observable<firebase.User>;
     welcomeMessage = '';
     logoutMessage = '';
     isAdmin = false;
 
-    constructor(private router: Router, private http: Http) {}
+    constructor(private router: Router, private http: Http, private afAuth: AngularFireAuth) {
+        this.user$ = afAuth.authState;
+    }
 
     signupUser(email: string, password: string) {
         firebase.auth().createUserWithEmailAndPassword(email, password)

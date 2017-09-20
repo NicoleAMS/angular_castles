@@ -14,4 +14,5 @@ export const environment = {
     storageBucket: "angular-castles.appspot.com",
     messagingSenderId: "571309061086"
   }
+
 };
