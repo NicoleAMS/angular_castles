@@ -17,6 +17,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
 
+    this.auth.welcomeBack();
     // firebase.auth().onAuthStateChanged( (user) => {
     //   if (user) {
     //     console.log("You are logged in");

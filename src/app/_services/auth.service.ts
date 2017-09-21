@@ -50,6 +50,7 @@ export class AuthService {
     signout() {
         this.afAuth.auth.signOut();
         this.alertMessage = true;
+        this.isAdmin = false;
         this.logoutMessage = 'Successfully logged out';
         this.router.navigate(['/']);
     }
@@ -57,10 +58,21 @@ export class AuthService {
 
     isAuthenticated() {
         const currentUser = this.afAuth.auth.currentUser;
+        console.log(currentUser);
         if (currentUser && currentUser.email === 'fred@hotmail.com') {
             this.isAdmin = true;
         }
         return currentUser != null;
+    }
+
+    welcomeBack() {
+        if (this.isAuthenticated() === true) {
+            const user = this.afAuth.auth.currentUser;
+            console.log(user);
+            this.alertMessage = true;
+            this.welcomeMessage = 'Welcome back, ' + user.email;
+            console.log(this.welcomeMessage);
+        }
     }
 
 }
