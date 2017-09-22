@@ -15,7 +15,7 @@ const appRoutes: Routes = [
     { path: 'register', component: RegisterComponent },
     { path: 'login', component: LoginComponent },
     { path: 'admin/castles/new', component: ManageCastlesComponent, canActivate: [AuthGuard] },
-    { path: 'admin/castles/:id/edit', component: ManageCastlesComponent, canActivate: [AuthGuard] }
+    { path: 'admin/castles/edit/:id', component: ManageCastlesComponent, canActivate: [AuthGuard] }
     // canActivate: [AuthGuard, AdminGuard]
     // canActivate: [AuthGuard]
   ];

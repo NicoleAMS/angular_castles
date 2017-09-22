@@ -16,8 +16,6 @@ import { Observable } from 'rxjs/Observable';
   styleUrls: ['./manage-castles.component.css']
 })
 export class ManageCastlesComponent implements OnInit {
-  // id: number;
-  // editMode = false;
   castleForm: FormGroup;
   castle$: FirebaseObjectObservable<Castle>;
   castleKey: string;
@@ -30,14 +28,6 @@ export class ManageCastlesComponent implements OnInit {
     this.castleKey = this.route.snapshot.params['id'];
     this.isNewCastle = this.castleKey == null;
     this.initForm();
-  //   this.route.params.subscribe(
-  //     (params: Params) => {
-  //       this.id = +params['id'];
-  //       this.editMode = params['id'] != null;
-  //       this.initForm();
-  //       // console.log(this.editMode);
-  //     }
-  //   );
     console.log(this.isNewCastle);
   }
 
@@ -68,7 +58,7 @@ export class ManageCastlesComponent implements OnInit {
 
   saveCastle(castle: Castle) {
     const save: any = this.isNewCastle ? this.castleService.saveCastle(castle) :
-    this.castleService.updateCastle(1, castle);
+    this.castleService.updateCastle(castle);
     save.then(_ => this.router.navigate(['admin/castles/new']));
   }
 
@@ -79,15 +69,6 @@ export class ManageCastlesComponent implements OnInit {
       })
     );
   }
-
-  // onSave() {
-  //   this.dataStorageService.storeCastles()
-  //   .subscribe(
-  //     (response: Response) => {
-  //       console.log(response);
-  //     }
-  //   );
-  // }
 
   private initForm() {
     let castleName = '';

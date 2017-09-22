@@ -8,6 +8,8 @@
           <h4 class="list-group-item-header">{{castle.name | uppercase }}</h4>
           <p class="list-group-item-text">{{castle.description}}</p><br>
           <p class="list-group-item-text">{{castle.county}}</p>
+          <button class="btn btn-danger pull-right" *ngIf="authService.isAuthenticated() && authService.isAdmin === true">Delete</button>
+          <button class="btn btn-success pull-right" *ngIf="authService.isAuthenticated() && authService.isAdmin === true"><a [routerLink]="['/admin/castles/edit', castle.$key]">Update</a></button>
         </div>
       </div>
       <br>

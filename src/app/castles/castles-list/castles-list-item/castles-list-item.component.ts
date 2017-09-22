@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Castle2 } from '../../castle';
+import { Castle } from '../../castle.model';
+import { AuthService } from '../../../_services/auth.service';
+
 
 @Component({
   selector: 'app-castles-list-item',
@@ -7,13 +9,18 @@ import { Castle2 } from '../../castle';
   styleUrls: ['./castles-list-item.component.css']
 })
 export class CastlesListItemComponent implements OnInit {
-  @Input() castle: Castle2;
+  @Input() castle: Castle;
   @Input() index: number;
 
-  constructor() { }
+  constructor(private authService: AuthService) { }
 
   ngOnInit() {
   }
 
+  onUpdate() {
+    
+  }
+
+  onDelete() {}
 
 }
