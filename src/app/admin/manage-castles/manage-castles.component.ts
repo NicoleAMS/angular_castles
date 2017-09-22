@@ -76,32 +76,35 @@ export class ManageCastlesComponent implements OnInit {
     let castleCounty = '';
     let castleDescription = '';
     let castleOpeningTimes = '';
-    const castlePrices = [''];
+    const castlePrices = [];
     const castleImages = new FormArray([]);
     console.log(castlePrices[0]);
 
     if (!this.isNewCastle) {
-      const castle = this.castleService.getCastle(this.castleKey);
-      console.log(castle);
-      // castleName = castle.name;
-      // castleAddress = castle.address;
-      // castleCounty = castle.county;
-      // castleDescription = castle.description;
-      // castleOpeningTimes = castle.openingTimes;
-      // if (castle['prices']) {
-      //   for (const price of castle.prices) {
-      //     castlePrices.push(price);
-      //   }
-      // }
-      // if (castle['images']) {
-      //   for (const image of castle.images) {
-      //     castleImages.push(
-      //       new FormGroup({
-      //         'url': new FormControl(image.url, Validators.required)
-      //       })
-      //     );
-      //   }
-      // }
+      const castleObject = [];
+      const castle = this.castleService.getCastle(this.castleKey).forEach(value => castleObject.push(value));
+      // console.log('Values: ', castleObject[0].address);
+      // console.log('Key: ', this.castleKey);
+      castleName = castleObject[0].name;
+      castleAddress = castleObject[0].address;
+      castleCounty = castleObject[0].county;
+      castleDescription = castleObject[0].description;
+      castleOpeningTimes = castleObject[0].openingTimes;
+      if (castleObject[0]['prices']) {
+        for (const price of castleObject[0].prices) {
+          castlePrices.push(price);
+        }
+      }
+      console.log(castlePrices[3]);
+      if (castleObject[0]['images']) {
+        for (const image of castleObject[0].images) {
+          castleImages.push(
+            new FormGroup({
+              'url': new FormControl(image.url, Validators.required)
+            })
+          );
+        }
+      }
     }
 
     this.castleForm = new FormGroup({
@@ -115,7 +118,6 @@ export class ManageCastlesComponent implements OnInit {
       'priceM': new FormControl(castlePrices[2]),
       'images': castleImages
     });
-    console.log(castlePrices[0]);
   }
 
 }
