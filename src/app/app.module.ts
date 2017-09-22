@@ -40,7 +40,7 @@ import { AdminGuard } from './_services/admin-guard.service';
     RegisterComponent,
     LoginComponent,
     ProfileComponent,
-    // ManageCastlesComponent
+    ManageCastlesComponent
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),

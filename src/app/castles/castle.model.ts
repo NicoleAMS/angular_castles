@@ -33,3 +33,15 @@ export class Castle {
       this.url = url;
     }
   }
+
+  export class CastlePrices {
+    public adult: string;
+    public child: string;
+    public member: string;
+
+    constructor(adult: string, child: string, member: string) {
+      this.adult = adult;
+      this.child = child;
+      this.member = member;
+    }
+  }

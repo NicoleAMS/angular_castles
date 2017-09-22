@@ -58,7 +58,7 @@ export class AuthService {
 
     isAuthenticated() {
         const currentUser = this.afAuth.auth.currentUser;
-        console.log(currentUser);
+        // console.log(currentUser);
         if (currentUser && currentUser.email === 'fred@hotmail.com') {
             this.isAdmin = true;
         }
