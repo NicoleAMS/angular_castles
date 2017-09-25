@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../_services/auth.service';
+import { CastleService } from '../../_services/castle.service';
 
 @Component({
   selector: 'app-header',
@@ -8,9 +9,16 @@ import { AuthService } from '../../_services/auth.service';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private castleService: CastleService) { }
 
   ngOnInit() {
+  }
+
+  search($event) {
+    const query = $event.target.value;
+    this.castleService.startAt.next(query);
+    this.castleService.endAt.next(query + '\uf8ff');
+    console.log('Start at: ', this.castleService.startAt);
   }
 
   onLogout() {

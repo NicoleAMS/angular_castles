@@ -10,21 +10,16 @@ import { FirebaseListObservable } from 'angularfire2/database';
   styleUrls: ['./castles-list.component.css']
 })
 export class CastlesListComponent implements OnInit {
-  // castles: Castle[] = [];
   castles$: FirebaseListObservable<Castle2[]>;
+  castles;
 
   constructor(private castleService: CastleService, private dataStorageService: DataStorageService) { }
 
   ngOnInit() {
-    // this.castleService.castlesChanged.subscribe(
-    //   (castles: Castle[]) => {
-    //     this.castles = castles;
-    //   }
-    // );
-    // this.castles = this.castleService.castles;
-
     this.getCastles();
-
+    this.castleService.searchCastles(this.castleService.startAt, this.castleService.endAt)
+    .subscribe(castles => this.castles = castles);
+    console.log('Castles: ', this.castles);
   }
 
   getCastles() {

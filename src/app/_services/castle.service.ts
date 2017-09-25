@@ -10,6 +10,8 @@ export class CastleService {
     castle$: FirebaseObjectObservable<Castle2>;
     castles$: FirebaseListObservable<Castle2[]>;
     castleKey$ = this.route.snapshot.params['id'];
+    startAt = new Subject();
+    endAt = new Subject();
 
     constructor(private db: AngularFireDatabase, private route: ActivatedRoute) {
         this.castle$ = db.object('/castle');
@@ -24,6 +26,16 @@ export class CastleService {
     getCastles() {
         this.castles$.forEach(value => console.log(value));
         return this.castles$;
+    }
+
+    searchCastles(start, end) {
+        return this.db.list('/castles', {
+            query: {
+                orderByChild: 'name',
+                startAt: start,
+                endAt: end
+            }
+        });
     }
 
     saveCastle(castle: Castle) {

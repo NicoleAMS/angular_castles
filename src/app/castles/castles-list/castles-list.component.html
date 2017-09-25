@@ -5,10 +5,18 @@
       <div class="sidebar"></div>
     </div>
     <div class="col col-xs-8">
-      <app-castles-list-item 
-        *ngFor="let castle of castles$ | async" 
-        [castle]="castle" [index]="i">
-      </app-castles-list-item>  
+      <div *ngIf="!castles">
+        <app-castles-list-item 
+          *ngFor="let castle of castles$ | async" 
+          [castle]="castle" [index]="i">
+        </app-castles-list-item>  
+      </div>
+      <div *ngIf="castles">
+          <app-castles-list-item 
+            *ngFor="let castle of castles" 
+            [castle]="castle" [index]="i">
+          </app-castles-list-item>  
+        </div>
       <router-outlet></router-outlet>
     </div>
   </div>
