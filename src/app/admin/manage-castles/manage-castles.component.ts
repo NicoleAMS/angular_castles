@@ -20,6 +20,7 @@ export class ManageCastlesComponent implements OnInit {
   castle$: FirebaseObjectObservable<Castle>;
   castleKey: string;
   isNewCastle: boolean;
+  castleName$: string;
 
   constructor(private route: ActivatedRoute,
     private castleService: CastleService, private router: Router) { }
@@ -88,6 +89,7 @@ export class ManageCastlesComponent implements OnInit {
       // console.log('Values: ', castleObject[0].address);
       // console.log('Key: ', this.castleKey);
       castleName = castleObject[0].name;
+      this.castleName$ = castleObject[0].name;
       castleAddress = castleObject[0].address;
       castleCounty = castleObject[0].county;
       castleDescription = castleObject[0].description;

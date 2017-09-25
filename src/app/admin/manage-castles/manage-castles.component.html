@@ -1,7 +1,8 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12">
-      <h1>ADD A NEW CASTLE</h1>
+      <h1 *ngIf="isNewcastle">ADD A NEW CASTLE</h1>
+      <h1 *ngIf="!isNewcastle">UPDATE {{ castleName$ | uppercase }}</h1>
       <hr>
     </div>
   </div>
