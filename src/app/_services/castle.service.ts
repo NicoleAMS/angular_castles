@@ -38,8 +38,10 @@ export class CastleService {
         .catch(error => console.log('Something went wrong while saving the castle', error));
     }
 
-    updateCastle(castle: Castle) {
-        return this.castles$.update(this.castleKey$, castle)
+    updateCastle(castleKey, castle: Castle) {
+        console.log('castleKey: ', castleKey);
+        console.log('castle: ', castle);
+        return this.castles$.update(castleKey, castle)
         .then(_ => console.log('Successfully updated castle!'))
         .catch(error => console.log('Something went wrong while updating the castle', error));
     }

@@ -47,7 +47,9 @@ export class ManageCastlesComponent implements OnInit {
       this.castleForm.value['county']
     );
     if (!this.isNewCastle) {
-      // this.castleService.updateCastle(this.castleKey, newCastle);
+      console.log('Castle Key: ', this.castleKey);
+      console.log('onSubmit', newCastle);
+      this.castleService.updateCastle(this.castleKey, newCastle);
     } else {
       console.log('onSubmit', newCastle);
       this.saveCastle(newCastle);
@@ -58,7 +60,7 @@ export class ManageCastlesComponent implements OnInit {
 
   saveCastle(castle: Castle) {
     const save: any = this.isNewCastle ? this.castleService.saveCastle(castle) :
-    this.castleService.updateCastle(castle);
+    this.castleService.updateCastle(this.castleKey, castle);
     save.then(_ => this.router.navigate(['admin/castles/new']));
   }
 
