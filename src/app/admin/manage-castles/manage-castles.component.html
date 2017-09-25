@@ -109,7 +109,7 @@
 
         <hr>
         <button [disabled]="!castleForm.valid" class="btn btn-success" type="button" (click)="onSubmit()">SAVE</button>
-        <button class="btn btn-danger" type="submit">CANCEL</button>
+        <button class="btn btn-danger" type="button" [routerLink]="['/visit']">CANCEL</button>
         <hr>
       </form>
     </div>

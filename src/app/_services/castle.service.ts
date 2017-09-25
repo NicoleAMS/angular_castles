@@ -50,4 +50,10 @@ export class CastleService {
     //     this.castles[index] = updatedCastle;
     //     this.castlesChanged.next(this.castles.slice());
     // }
+
+    deleteCastle(castle) {
+        return this.castles$.remove(castle.$key)
+        .then(_ => console.log('Castle with ID ', castle.$key, ' successfully deleted!'))
+        .catch(error => console.log('Something went wrong while deleting this castle: ', error));
+    }
 }
