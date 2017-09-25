@@ -11,11 +11,6 @@ export class CastleService {
     castles$: FirebaseListObservable<Castle2[]>;
     castleKey$ = this.route.snapshot.params['id'];
 
-    castlesChanged = new Subject<Castle[]>();
-
-    castles: Castle[] = [
-    ];
-
     constructor(private db: AngularFireDatabase, private route: ActivatedRoute) {
         this.castle$ = db.object('/castle');
         this.castles$ = db.list('/castles');
@@ -45,11 +40,6 @@ export class CastleService {
         .then(_ => console.log('Successfully updated castle!'))
         .catch(error => console.log('Something went wrong while updating the castle', error));
     }
-
-    // updateCastle(index: number, updatedCastle: Castle) {
-    //     this.castles[index] = updatedCastle;
-    //     this.castlesChanged.next(this.castles.slice());
-    // }
 
     deleteCastle(castle) {
         return this.castles$.remove(castle.$key)
