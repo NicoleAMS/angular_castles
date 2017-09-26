@@ -25,7 +25,11 @@ export class CastleService {
 
     getCastles() {
         this.castles$.forEach(value => console.log(value));
-        return this.castles$;
+        return this.db.list('/castles', {
+            query: {
+                orderByChild: 'name'
+            }
+        });
     }
 
     searchCastles(start, end) {
