@@ -32,10 +32,12 @@ export class CastleService {
         });
     }
 
-    searchCastles(start, end) {
+    searchCastles(start, end, attribute) {
+        console.log('Attribute: ', attribute);
+        console.log('Start: ', start);
         return this.db.list('/castles', {
             query: {
-                orderByChild: 'name',
+                orderByChild: attribute,
                 startAt: start,
                 endAt: end
             }

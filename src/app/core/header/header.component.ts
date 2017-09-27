@@ -18,7 +18,6 @@ export class HeaderComponent implements OnInit {
     const query = $event.target.value;
     this.castleService.startAt.next(query);
     this.castleService.endAt.next(query + '\uf8ff');
-    console.log('Start at: ', this.castleService.startAt);
   }
 
   onLogout() {

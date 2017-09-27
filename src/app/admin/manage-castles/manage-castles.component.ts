@@ -28,8 +28,8 @@ export class ManageCastlesComponent implements OnInit {
   ngOnInit() {
     this.castleKey = this.route.snapshot.params['id'];
     this.isNewCastle = this.castleKey == null;
+    console.log('New Castle: ', this.isNewCastle, this.castleKey);
     this.initForm();
-    console.log(this.isNewCastle);
   }
 
   getCastle() {

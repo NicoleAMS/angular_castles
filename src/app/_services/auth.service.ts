@@ -55,6 +55,15 @@ export class AuthService {
         this.router.navigate(['/']);
     }
 
+    // isanAdmin() {
+    //     this.user$.map(user => {
+    //         console.log('User: ', user);
+    //         if (user && user.uid && user.email === 'fred@hotmail.com') {
+    //             this.isAdmin = true;
+    //         }
+    //     });
+    //     return this.isAdmin;
+    // }
 
     isAuthenticated() {
         const currentUser = this.afAuth.auth.currentUser;

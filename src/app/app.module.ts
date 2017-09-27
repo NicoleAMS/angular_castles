@@ -27,6 +27,7 @@ import { DataStorageService } from './_services/data-storage.service';
 import { AuthService } from './_services/auth.service';
 import { AuthGuard } from './_services/auth-guard.service';
 import { AdminGuard } from './_services/admin-guard.service';
+import { CastlesSearchComponent } from './castles/castles-search/castles-search.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { AdminGuard } from './_services/admin-guard.service';
     RegisterComponent,
     LoginComponent,
     ProfileComponent,
-    ManageCastlesComponent
+    ManageCastlesComponent,
+    CastlesSearchComponent
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),
