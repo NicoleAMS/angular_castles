@@ -12,6 +12,7 @@ export class CastleService {
     castleKey$ = this.route.snapshot.params['id'];
     startAt = new Subject();
     endAt = new Subject();
+    attribute: string;
 
     constructor(private db: AngularFireDatabase, private route: ActivatedRoute) {
         this.castle$ = db.object('/castle');
@@ -33,7 +34,8 @@ export class CastleService {
     }
 
     searchCastles(start, end, attribute) {
-        console.log('Attribute: ', attribute);
+        this.attribute = attribute;
+        // console.log('Attribute: ', this.attribute);
         console.log('Start: ', start);
         return this.db.list('/castles', {
             query: {

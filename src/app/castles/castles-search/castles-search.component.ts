@@ -16,15 +16,14 @@ export class CastlesSearchComponent implements OnInit {
   ngOnInit() {
   }
 
-  search($event, castleName) {
+  search($event, attribute) {
     if ($event.timeStamp - this.lastKeypress > 200) {
       const query = $event.target.value;
       this.castleService.startAt.next(query);
       this.castleService.endAt.next(query + '\uf8ff');
     }
     this.lastKeypress = $event.timeStamp;
-    this.attribute = castleName.id;
-    console.log(this.attribute);
+    this.attribute = attribute.id;
 
     this.castleService.searchCastles(this.castleService.startAt, this.castleService.endAt, this.attribute)
     .subscribe(castles => this.castles = castles);
