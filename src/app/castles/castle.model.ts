@@ -1,6 +1,7 @@
 export class Castle {
     public name: string;
     public images: Image[];
+    public shortDescr: string;
     public description: string;
     public prices: string[];
     public openingTimes: string;
@@ -10,6 +11,7 @@ export class Castle {
     constructor(
       name: string,
       images: Image[],
+      shortDescr: string,
       description: string,
       prices: string[],
       openingTimes: string,
@@ -18,6 +20,7 @@ export class Castle {
     ) {
       this.name = name;
       this.images = images;
+      this.shortDescr = shortDescr;
       this.description = description;
       this.prices = prices;
       this.openingTimes = openingTimes;

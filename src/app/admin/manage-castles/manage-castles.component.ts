@@ -41,6 +41,7 @@ export class ManageCastlesComponent implements OnInit {
     const newCastle = new Castle(
       this.castleForm.value['name'],
       this.castleForm.value['images'],
+      this.castleForm.value['shortdescr'],
       this.castleForm.value['description'],
       prices,
       this.castleForm.value['openingTimes'],
@@ -77,6 +78,7 @@ export class ManageCastlesComponent implements OnInit {
     let castleName = '';
     let castleAddress = '';
     let castleCounty = '';
+    let castleShortDescr = '';
     let castleDescription = '';
     let castleOpeningTimes = '';
     const castlePrices = [];
@@ -92,6 +94,7 @@ export class ManageCastlesComponent implements OnInit {
       this.castleName$ = castleObject[0].name;
       castleAddress = castleObject[0].address;
       castleCounty = castleObject[0].county;
+      castleShortDescr = castleObject[0].shortDescr;
       castleDescription = castleObject[0].description;
       castleOpeningTimes = castleObject[0].openingTimes;
       if (castleObject[0]['prices']) {
@@ -115,6 +118,7 @@ export class ManageCastlesComponent implements OnInit {
       'name': new FormControl(castleName, Validators.required),
       'address': new FormControl(castleAddress),
       'county': new FormControl(castleCounty),
+      'shortdescr': new FormControl(castleShortDescr),
       'description': new FormControl(castleDescription),
       'openingTimes': new FormControl(castleOpeningTimes),
       'priceA': new FormControl(castlePrices[0]),

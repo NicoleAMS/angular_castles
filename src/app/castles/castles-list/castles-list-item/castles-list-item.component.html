@@ -6,7 +6,7 @@
           </span>
         <div class="col col-lg-6">
           <h4 class="list-group-item-header">{{castle.name | uppercase }}</h4>
-          <p class="list-group-item-text">{{castle.description}}</p><br>
+          <p class="list-group-item-text">{{castle.shortDescr}}</p><br>
           <p class="list-group-item-text">{{castle.county}}</p>
           <button class="btn btn-danger pull-right" type="button" *ngIf="authService.isAuthenticated() && authService.isAdmin === true" (click)="onDeleteCastle(castle)"><a [routerLink]="['/visit']">Delete</a></button>
           <button class="btn btn-success pull-right" *ngIf="authService.isAuthenticated() && authService.isAdmin === true"><a [routerLink]="['/admin/castles/edit', castle.$key]">Update</a></button>
