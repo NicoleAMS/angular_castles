@@ -63,7 +63,7 @@ export class ManageCastlesComponent implements OnInit {
   saveCastle(castle: Castle) {
     const save: any = this.isNewCastle ? this.castleService.saveCastle(castle) :
     this.castleService.updateCastle(this.castleKey, castle);
-    save.then(_ => this.router.navigate(['visit']));
+    save.then(_ => this.router.navigate(['/visit']));
   }
 
   onAddImage() {

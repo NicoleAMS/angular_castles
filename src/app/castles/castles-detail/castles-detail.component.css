@@ -3,11 +3,16 @@
     padding: 20px;
 }
 
+.jumbotronCol {
+    padding: 0px 10px;
+}
+
 .jumbotron {
     color: black;
     height: 600px;
     background-repeat: no-repeat;
     background-size: cover;
+    border-radius: 0px;
 }
 
 .welcome {
@@ -24,8 +29,28 @@
 
 .name h1 {
     font-size: 48px;
+    padding-left: 20px;
+}
+
+.description {
+    /* background-color: rgba(14, 107, 2, 0.7); */
+    padding: 0px 30px;
+}
+
+.before {
+    background-color: rgba(247, 247, 247, 0.2);
+    padding: 20px;
+    margin-right: 20px;
 }
 
 strong {
     color: green;
 }
+
+.pricesRow {
+    padding: 0px 20px 0px 15px;
+}
+
+.prices {
+    padding: 0px;
+}   

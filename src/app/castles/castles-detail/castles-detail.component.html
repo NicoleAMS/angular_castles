@@ -16,7 +16,7 @@
   </div>
 
   <div class="row">
-    <div class="col-xs-12">
+    <div class="col-xs-12 jumbotronCol">
         <div class="jumbotron" [ngStyle]="{'background-image': 'url(' + castle.images[1].url + ')' }">
           <div class="col-xs-5 col-xs-offset-7">
             <div class="welcome">
@@ -32,10 +32,24 @@
       <h4>DESCRIPTION</h4>
       <p>{{castle.description}}</p>
     </div>
-    <div class="col-xs-6 before">
+    <div class="col-xs-6">
+      <div class="before">
         <h4>BEFORE YOU GO</h4>
         <p><strong>Opening Times: </strong>{{castle.openingTimes}}</p>
         <p><strong>Address: </strong>{{castle.address}}</p>
+        <div class="row pricesRow">
+          <div class="col-xs-1 prices">
+              <p><strong>Prices: </strong></p>
+            </div>
+            <div class="col-xs-11 prices">
+              <ul>
+                <li>Adult: {{castle.prices[0]}}</li>
+                <li>Child: {{castle.prices[1]}}</li>
+                <li>Member: {{castle.prices[2]}}</li>
+              </ul>
+            </div>
+        </div>
       </div>
+    </div>
   </div>
 </div>
