@@ -65,6 +65,10 @@ export class AuthService {
     //     return this.isAdmin;
     // }
 
+    currentUser() {
+        return this.user$;
+    }
+
     isAuthenticated() {
         const currentUser = this.afAuth.auth.currentUser;
         // console.log(currentUser);

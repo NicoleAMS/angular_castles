@@ -28,6 +28,8 @@ import { AuthService } from './_services/auth.service';
 import { AuthGuard } from './_services/auth-guard.service';
 import { AdminGuard } from './_services/admin-guard.service';
 import { CastlesSearchComponent } from './castles/castles-search/castles-search.component';
+import { ProfileEditComponent } from './profile/profile-edit/profile-edit.component';
+import { ProfileService } from './_services/profile.service';
 
 @NgModule({
   declarations: [
@@ -42,7 +44,8 @@ import { CastlesSearchComponent } from './castles/castles-search/castles-search.
     LoginComponent,
     ProfileComponent,
     ManageCastlesComponent,
-    CastlesSearchComponent
+    CastlesSearchComponent,
+    ProfileEditComponent
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),
@@ -55,7 +58,7 @@ import { CastlesSearchComponent } from './castles/castles-search/castles-search.
     HttpModule,
     // RouterModule.forRoot(appRoutes)
   ],
-  providers: [CastleService, DataStorageService, AuthService, AuthGuard, AdminGuard],
+  providers: [CastleService, DataStorageService, AuthService, AuthGuard, AdminGuard, ProfileService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -10,8 +10,10 @@ import { CastleService } from '../../_services/castle.service';
 export class HeaderComponent implements OnInit {
 
   constructor(private authService: AuthService, private castleService: CastleService) { }
+  user;
 
   ngOnInit() {
+    this.authService.currentUser().subscribe(user => this.user = user.uid);
   }
 
   search($event) {

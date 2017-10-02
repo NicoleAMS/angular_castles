@@ -5,7 +5,7 @@ import 'rxjs/Rx';
 import { Castle } from '../castle.model';
 import { CastleService } from '../../_services/castle.service';
 import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database';
-import { Castle2 } from '../castle';
+// import { Castle2 } from '../castle';
 
 @Component({
   selector: 'app-castles-detail',
@@ -13,7 +13,7 @@ import { Castle2 } from '../castle';
   styleUrls: ['./castles-detail.component.css']
 })
 export class CastlesDetailComponent implements OnInit {
-  castle$: FirebaseObjectObservable<Castle2>;
+  castle$: FirebaseObjectObservable<Castle>;
   castleKey: string;
 
   constructor(

@@ -1,0 +1,58 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <h1>EDIT PROFILE</h1>
+      <hr>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12 col-md-6 col-md-offset-3">
+      <form [formGroup]="profileForm" class="form-horizontal" (ngSubmit)="onSubmit()">
+
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="form-group">
+              <label for="firstName" class="col-sm-3 control-label">First Name</label>
+              <div class="col-sm-9">
+                <input class="form-control" type="text" id="firstName" formControlName="firstName">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="form-group">
+              <label for="lastName" class="col-sm-3 control-label">Last Name</label>
+              <div class="col-sm-9">
+                <input class="form-control" type="text" id="lastName" formControlName="lastName">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="form-group">
+              <label for="avatar" class="col-sm-3 control-label">Profile picture</label>
+              <div class="col-sm-9">
+                <input class="form-control" type="text" id="avatar" formControlName="avatar" #avatar>
+                <br>
+                <img [src]="avatar.value" class="img-responsive">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <hr>
+        <button [disabled]="!profileForm.valid" class="btn btn-success" type="button" (click)="onSubmit()">SAVE</button>
+        <button class="btn btn-danger" type="button" [routerLink]="['/profile', userUID]">CANCEL</button>
+        <hr>
+
+      </form>
+
+    </div>
+  </div>
+
+</div>
